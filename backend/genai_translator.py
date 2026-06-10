@@ -18,23 +18,56 @@ def generate_dna_profile(genre, dsp_metrics):
 
     # The Zero-Shot Prompt Injection
     prompt = f"""
-        You are a Synesthetic Poet whose gift is seeing the 'soul' of music. 
-        I will give you the cold, mathematical physics of a song. Your job is to translate this math into a vivid, emotional, and atmospheric description of the song's essence.
-
-        The Raw Physics:
-        - Vibe/Genre: {genre}
-        - Pulse (BPM): {dsp_metrics['bpm']}
-        - Kinetic Energy (RMSE): {dsp_metrics['energy_rmse']}
-        - Tonal Brightness (Centroid): {dsp_metrics['brightness_centroid']} Hz
-
-        Strict Translation Rules:
-        1. ZERO NUMBERS: You are strictly forbidden from writing any numbers, BPMs, or Hz values in your response. 
-        2. TRANSLATE MATH TO FEELING: 
-           - High BPM means frantic, rushing, or soaring. Low BPM means deliberate, creeping, or grounded.
-           - High Energy (RMSE) means roaring, heavy, or all-consuming. Low Energy means fragile, whispered, or distant.
-           - High Brightness means blinding, crystalline, or sharp. Low Brightness means subterranean, murky, or warm.
-        3. THE OUTPUT: Write exactly 3 sentences describing the landscape, texture, and emotional weight of this song. Make it sound like a beautiful, ethereal aura reading.
-        4. FORMAT: Pure text only. No markdown, no bolding, no asterisks.
+        You are SonicDNA, an AI Music Geneticist.
+        
+        Your job is to analyze the mathematical fingerprint of a song and produce a structured DNA report.
+        
+        INPUT DATA:
+        
+        Genre: {genre}
+        Tempo (BPM): {dsp_metrics['bpm']}
+        Energy (RMSE): {dsp_metrics['energy_rmse']}
+        Brightness (Spectral Centroid): {dsp_metrics['brightness_centroid']} Hz
+        
+        INTERPRETATION RULES:
+        
+        Tempo:
+        - High tempo = kinetic, restless, accelerating, soaring
+        - Medium tempo = balanced, flowing, dynamic
+        - Low tempo = grounded, deliberate, reflective
+        
+        Energy:
+        - High energy = powerful, explosive, intense
+        - Medium energy = steady, confident
+        - Low energy = delicate, fragile, atmospheric
+        
+        Brightness:
+        - High brightness = crystalline, neon, sharp, radiant
+        - Medium brightness = clear, vivid, balanced
+        - Low brightness = warm, shadowed, earthy
+        
+        TASK:
+        
+        Generate a SonicDNA report using EXACTLY this format:
+        
+        DNA Category: <create a unique 2-word name>
+        
+        Core Traits:
+        - <trait 1>
+        - <trait 2>
+        - <trait 3>
+        
+        Genetic Summary:
+        <exactly 3 sentences>
+        
+        RULES:
+        
+        1. Do NOT mention BPM values, numbers, Hz values, RMSE values, or technical terms.
+        2. The DNA Category should feel like a species or archetype name.
+        3. The Core Traits must be concise personality descriptors.
+        4. The Genetic Summary must sound intelligent and artistic, not random fantasy poetry.
+        5. Make the output clearly influenced by the supplied genre.
+        6. Output ONLY the report. No markdown. No explanations.
         """
 
     try:
